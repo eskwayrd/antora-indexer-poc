@@ -1,0 +1,17 @@
+# Node ignores
+node_modules
+lerna-debug.log
+npm-debug.log
+packages/*/node_modules
+packages/*/npm-debug.log
+**/db-*
+**/public
+**/.lock
+**/dist
+**/.cache
+
+# Vim ignores
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]

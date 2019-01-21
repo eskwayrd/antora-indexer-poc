@@ -1,0 +1,37 @@
+{
+  "name": "antora-indexer-poc",
+  "version": "0.0.1",
+  "description": "Demonstrates how to add lunr.js indexing to Antora builds, and a search UI to the Antora default UI.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eskwayrd/antora-indexer-poc.git"
+  },
+  "keywords": [
+    "antora",
+    "lunr.js",
+    "index",
+    "search"
+  ],
+  "author": "Ewan Edwards <eskwayrd@gmail.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/eskwayrd/antora-indexer-poc/issues"
+  },
+  "homepage": "https://github.com/eskwayrd/antora-indexer-poc#readme",
+  "dependencies": {
+    "@antora/cli": "^2.0.0",
+    "@antora/site-generator-default": "^2.0.0",
+    "cheerio": "^1.0.0-rc.2",
+    "html-entities": "^1.2.1",
+    "lunr": "^2.3.5",
+    "pako": "^1.0.8",
+    "serve": "^10.1.1"
+  }
+}

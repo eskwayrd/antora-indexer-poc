@@ -1,0 +1,117 @@
+= antora-indexer-poc
+
+This repo demonstrates how to add link:https://lunrjs.com/[lunr.js]
+indexing to Antora builds, and a search UI to the Antora default UI.
+
+[NOTE]
+======
+This is a proof of concept. It should work, but there are no
+guarantees.
+
+- The code has not been tested on Windows.
+- The search UI has only been tested in Google Chrome.
+- Improvements to make the search UI responsive have not yet been made.
+======
+
+
+== Usage
+
+=== Easy
+
+Run `make`, which:
+
+- Installs dependencies.
+- Runs Antora to generate HTML and produce an index
+- Runs serve so that you can browse the HTML and use the search UI
+
+
+=== Individual steps
+
+Follow these steps if you don't have `make` installed, or you want to
+see how everything works:
+
+1. Install all of the dependencies:
++
+[source,bash]
+----
+npm i
+----
+
+2. Run Antora to generate HTML and an index:
++
+[source,bash]
+----
+node_modules/.bin/antora --generator=./generator/generator.js antora-playbook.yml
+----
+
+By default, the HTML and index are place in the `public` folder.
+
+3. Run serve to start a web service so that you can browse the HTML and
+use the search UI:
++
+[source,bash]
+----
+node_modules/.bin/serve public/
+----
++
+Serve emits URLs that you can use, e.g. `http://localhost:5000`. Copy
+the URL into your browser.
+
+
+== Search UI
+
+The search UI is implemented as a drop-down menu, containing all
+matching entries. Results update immediately as you type. Use the
+kbd:[Arrow Up] and kbd:[Arrow Down] keys to select a result, and press
+kbd:[Enter] to navigate to that result (or just click). Press
+kbd:[Escape] to close the results.
+
+
+== Notes
+
+- The included `antora-playbook.yml` is configured to use the Antora
+  documentation. This demonstrates an excellent Antora feature: you can
+  generate HTML for any documentation that exists in an Antora component
+  in any accessible Git-based repository.
++
+Antora's documentation is comprised of two components, one for Antora
+itself and another for its UI, and the Antora component has multiple
+versions. This is useful to demonstrate the 'faceting' of the search
+results, which are combined into groups based on the component +
+version.
+
+- You can use the search with your own documentation by revising the
+  `content:` section of the `antora-playbook.yml` file.
+
+- The `supplemental_ui` folder contains the search UI, as override files
+  for Antora's default UI.
+
+- lunr indexes can often become quite large. The
+  link:https://github.com/nodeca/pako[pako] library is used to compress
+  the index when it is created, and is also used to decompress the index
+  in the browser. Typically, the compressed index is about 20% the size
+  of the uncompressed index.
++
+As such, using lunr for search is best for sites with only a modest
+amount of content. Large sites likely require a search service, such as
+Algolia, to avoid distributing large indexes to all new users of your
+documentation site.
+
+
+== Authors
+
+- link:https://github.com/eskwayrd[Ewan Edwards]
+- link:https://github.com/mojavelinux[Dan Allen], who wrote
+  link:https://asciidoctor.org/[Asciidoctor] and
+  link:https://antora.org/[Antora]
+- link:https://github.com/Mogztter[Guillaume Grossetie], who wrote
+  link:https://github.com/Mogztter/antora-lunr[antora-lunr]
+
+== Copyright and License
+
+Copyright (C) 2019 by the contributing authors.
+
+Use of this software is granted under the terms of the
+link:https://www.mozilla.org/en-US/MPL/2.0/[Mozillia Puhlic License
+Version 2.0] (MPL-2.0). See link:LICENSE[`LICENSE`] to find the full
+license text.
