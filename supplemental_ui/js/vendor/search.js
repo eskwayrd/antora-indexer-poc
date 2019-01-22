@@ -302,7 +302,7 @@
   // helper function that converts a buffer into a string
   function buffer2str (buf) {
     var a16 = new Uint16Array(buf.buffer)
-    var str = ""
+    var str = ''
     for (var i = 0; i < a16.length; ++i) {
       str += String.fromCharCode(a16[i])
     }
@@ -321,7 +321,6 @@
     xhr.responseType = 'arraybuffer'
     xhr.onload = function () {
       if (xhr.status === 200 || xhr.status === 0) {
-        var response = xhr.response
         var json = decompress(xhr.response)
         callback(Object.assign({
           index: lunr.Index.load(json.index),
@@ -526,10 +525,8 @@
     // var result = index.search(text + '*')
 
     var result = index.query(function (q) {
-      var terms = 0
       // add query clause for each "word" in the search text
       lunr.tokenizer(text).forEach(function (token) {
-        ++terms
         // make exact matches in title have more weight
         q.term(token.toString(), { fields: ['title'], boost: 10, })
         // wildcard matches in titles have normal weight
