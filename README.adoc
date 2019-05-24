@@ -112,6 +112,6 @@ documentation site.
 Copyright (C) 2019 by the contributing authors.
 
 Use of this software is granted under the terms of the
-link:https://www.mozilla.org/en-US/MPL/2.0/[Mozillia Puhlic License
+link:https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License
 Version 2.0] (MPL-2.0). See link:LICENSE[`LICENSE`] to find the full
 license text.
